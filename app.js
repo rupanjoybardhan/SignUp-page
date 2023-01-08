@@ -3,6 +3,8 @@ const bodyParser=require("body-parser");
 const request=require("request");
 const https=require("https");
 const app=express();
+//const hostName='0.0.0.0';
+;
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
@@ -33,7 +35,7 @@ app.post("/",function(req,res){
 
   const options={
     method:"post",
-    auth:"joy:6129118988f40d90cf53cd36979c1cb-us21"
+    auth:"joy:c6129118988f40d90cf53cd36979c1cb-us21"
   };
 
   const request=https.request(url,options,function(response){
@@ -56,7 +58,7 @@ app.post("/failure",function(req,res){
   res.redirect("/");
 })
 
-app.listen(3000,function(){
+app.listen(process.env.PORT || 3000,function(){
   console.log("server is running on port 3000");
 });
 
